@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Kitchen Requirement - Indian Restaurant</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f4f4;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+        }
+        table {
+            width: 100%;
+            background: #fff;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        th, td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+        th {
+            background: #ff9800;
+            color: #fff;
+        }
+        button {
+            padding: 10px 20px;
+            background: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background: #45a049;
+        }
+        #result {
+            background: #fff;
+            padding: 15px;
+            border: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Next Day Kitchen Requirement</h1>
+
+<form id="kitchenForm">
+<table>
+    <tr>
+        <th>Select</th>
+        <th>Item Name</th>
+        <th>Quantity (kg)</th>
+    </tr>
+
+    <!-- Items -->
+    <tr>
+        <td><input type="checkbox" name="item" value="Rice"></td>
+        <td>Rice</td>
+        <td>
+            <select>
+                <option value="0.5">0.5</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="5">5</option>
+                <option value="10">10</option>
+            </select>
+        </td>
+    </tr>
+
+    <tr>
+        <td><input type="checkbox" name="item" value="Wheat Flour"></td>
+        <td>Wheat Flour (Atta)</td>
+        <td>
+            <select>
+                <option value="0.5">0.5</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="5">5</option>
+                <option value="10">10</option>
+            </select>
+        </td>
+    </tr>
+
+    <tr>
+        <td><input type="checkbox" name="item" value="Onion"></td>
+        <td>Onion</td>
+        <td>
+            <select>
+                <option value="0.5">0.5</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="5">5</option>
+                <option value="10">10</option>
+            </select>
+        </td>
+    </tr>
+
+    <tr>
+        <td><input type="checkbox" name="item" value="Tomato"></td>
+        <td>Tomato</td>
+        <td>
+            <select>
+                <option value="0.5">0.5</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="5">5</option>
+                <option value="10">10</option>
+            </select>
+        </td>
+    </tr>
+
+    <tr>
+        <td><input type="checkbox" name="item" value="Potato"></td>
+        <td>Potato</td>
+        <td>
+            <select>
+                <option value="0.5">0.5</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="5">5</option>
+                <option value="10">10</option>
+            </select>
+        </td>
+    </tr>
+
+    <tr>
+        <td><input type="checkbox" name="item" value="Cooking Oil"></td>
+        <td>Cooking Oil</td>
+        <td>
+            <select>
+                <option value="0.5">0.5</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="5">5</option>
+                <option value="10">10</option>
+            </select>
+        </td>
+    </tr>
+
+</table>
+
+<center>
+    <button type="button" onclick="submitForm()">Submit Requirement</button>
+</center>
+</form>
+
+<h2>📋 Next Day Marketing Requirement</h2>
+<div id="result">
+    <p>No items selected.</p>
+</div>
+
+<script>
+function submitForm() {
+    const rows = document.querySelectorAll("table tr");
+    let output = "<ul>";
+    let hasItems = false;
+
+    for (let i = 1; i < rows.length; i++) {
+        const checkbox = rows[i].querySelector("input[type='checkbox']");
+        const qty = rows[i].querySelector("select").value;
+        const itemName = rows[i].cells[1].innerText;
+
+        if (checkbox && checkbox.checked) {
+            hasItems = true;
+            output += `<li>${itemName} - ${qty} kg</li>`;
+        }
+    }
+
+    output += "</ul>";
+
+    document.getElementById("result").innerHTML = hasItems
+        ? output
+        : "<p>No items selected.</p>";
+}
+</script>
+
+</body>
+</html>
