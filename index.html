@@ -129,6 +129,9 @@ button {
 <div class="item"><input type="checkbox"><label>maidha pindi </label><select><option>0.5</option><option>1</option><option>2</option></select></div>
 <div class="item"><input type="checkbox"><label>corn floor </label><select><option>0.5</option><option>1</option><option>2</option></select></div>
 <div class="item"><input type="checkbox"><label>white pepper </label><select><option>0.5</option><option>1</option><option>2</option></select></div>
+<div class="item"><input type="checkbox"><label>aata </label><select><option>0.5</option><option>1</option><option>2</option></select></div>
+<div class="item"><input type="checkbox"><label>chintapandu </label><select><option>0.5</option><option>1</option><option>2</option></select></div>
+<div class="item"><input type="checkbox"><label>tasting salt </label><select><option>0.5</option><option>1</option><option>2</option></select></div>
 
 
 
@@ -163,16 +166,18 @@ function generate() {
     document.querySelectorAll(".item").forEach(item => {
         const cb = item.querySelector("input[type='checkbox']");
         const label = item.querySelector("label").innerText;
-        const sel = item.querySelector("select");
+        const select = item.querySelector("select");
 
         if (cb.checked) {
-            text += sel ? `- ${label} : ${sel.value}\n`
-                        : `- ${label}\n`;
+            if (select) {
+                text += "- " + label + " : " + select.value + "\n";
+            } else {
+                text += "- " + label + "\n";
+            }
         }
     });
 
     document.getElementById("result").innerText = text;
-}
 
 function shareWhatsApp() {
     const text = document.getElementById("result").innerText;
